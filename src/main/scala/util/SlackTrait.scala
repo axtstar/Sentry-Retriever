@@ -6,7 +6,7 @@ import slack.models.{ActionField, Attachment}
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
 
-trait SlackTrait extends ConfigTrait {
+trait SlackTrait extends ConfigTrait:
 
   lazy val token: String = config.getString("slack.token")
   lazy val channel: String = config.getString("slack.channel")
@@ -29,7 +29,7 @@ trait SlackTrait extends ConfigTrait {
                   footer: String,
                   footer_icon: String=footerIcon,
                   ts: Long
-                 ): Future[String] = {
+                 ): Future[String] =
     given system: ActorSystem = ActorSystem("slack")
     given ec: ExecutionContextExecutor = system.dispatcher
 
@@ -69,6 +69,3 @@ trait SlackTrait extends ConfigTrait {
         )
       ))
     )
-  }
-
-}

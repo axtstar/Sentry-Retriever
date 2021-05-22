@@ -9,14 +9,14 @@ import scala.language.postfixOps
 import scalikejdbc._
 import scalikejdbc.config._
 
-object Main {
+object Main:
 
   lazy val config: Config = ConfigFactory.load()
   lazy val mode: String = config.getString("mode")
 
   lazy val logger: Logger = LoggerFactory.getLogger("Main")
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit =
     logger.info(s"mode: $mode")
     given system:ActorSystem = ActorSystem("slack")
     given executionContext:ExecutionContext = system.dispatcher
@@ -83,5 +83,5 @@ object Main {
 
     Await.result(result, Duration.Inf)
     System.exit(0)
-  }
-}
+
+

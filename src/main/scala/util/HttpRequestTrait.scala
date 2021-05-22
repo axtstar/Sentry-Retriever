@@ -6,9 +6,9 @@ import akka.http.scaladsl.model._
 
 import scala.concurrent.{ExecutionContext, Future}
 
-trait HttpRequestTrait {
+trait HttpRequestTrait:
 
-  def getData(url: String, headers: List[HttpHeader], entity: RequestEntity, method: HttpMethod = HttpMethods.POST) = {
+  def getData(url: String, headers: List[HttpHeader], entity: RequestEntity, method: HttpMethod = HttpMethods.POST) =
     given system: ActorSystem = ActorSystem("SingleRequest")
     given executionContext: ExecutionContext = system.dispatcher
 
@@ -22,5 +22,3 @@ trait HttpRequestTrait {
       )
 
     responseFuture
-  }
-}

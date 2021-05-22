@@ -11,14 +11,14 @@ import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.language.postfixOps
 
-object SentryRetriever extends HttpRequestTrait {
+object SentryRetriever extends HttpRequestTrait:
 
   lazy val config: Config = ConfigFactory.load()
   lazy val token: String = config.getString("sentry.auth_token")
   lazy val organization: String = config.getString("sentry.organization")
   lazy val groupID: String = config.getString("sentry.groupID")
 
-  def getIssues: Future[Future[List[Issue]]] ={
+  def getIssues: Future[Future[List[Issue]]] =
     given system: ActorSystem = ActorSystem("slack")
     given executionContext: ExecutionContext = system.dispatcher
 
@@ -52,9 +52,8 @@ object SentryRetriever extends HttpRequestTrait {
     }.recover {
       case e: Exception => throw e
     }
-  }
 
-  def getEvents: Future[Future[List[Event]]] ={
+  def getEvents: Future[Future[List[Event]]] =
     given system: ActorSystem = ActorSystem("slack")
     given executionContext: ExecutionContext = system.dispatcher
 
@@ -88,6 +87,3 @@ object SentryRetriever extends HttpRequestTrait {
     }.recover {
       case e: Exception => throw e
     }
-  }
-
-}

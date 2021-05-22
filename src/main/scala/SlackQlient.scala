@@ -5,14 +5,14 @@ import util.SlackTrait
 
 import scala.concurrent.Future
 
-object SlackQlient extends SlackTrait {
+object SlackQlient extends SlackTrait:
 
   // TODO not from config but from API
   lazy val ruleUrl: String = config.getString("sentry.ruleUrl")
   lazy val ruleName: String = config.getString("sentry.ruleName")
 
 
-  def send(title: String, message: String,link: Option[String], colorLevel: String, shortId: String, dataCreated: String): Future[String] = {
+  def send(title: String, message: String,link: Option[String], colorLevel: String, shortId: String, dataCreated: String): Future[String] =
     val string_to_date = DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(dataCreated)
     val instant = Instant.from(string_to_date)
 
@@ -28,5 +28,3 @@ object SlackQlient extends SlackTrait {
       footer = s"$shortId via <$ruleUrl|$ruleName>",
       ts = ts
     )
-  }
-}
