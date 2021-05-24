@@ -6,8 +6,8 @@ import orm.{Event, Issue}
 import scala.concurrent.duration.{Duration, DurationInt}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.language.postfixOps
-import scalikejdbc._
-import scalikejdbc.config._
+import scalikejdbc.*
+import scalikejdbc.config.*
 
 object Main:
 

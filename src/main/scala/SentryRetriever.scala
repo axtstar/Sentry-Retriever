@@ -22,7 +22,7 @@ object SentryRetriever extends HttpRequestTrait:
     given system: ActorSystem = ActorSystem("slack")
     given executionContext: ExecutionContext = system.dispatcher
 
-    import io.circe._, io.circe.parser._
+    import io.circe.*, io.circe.parser.*
 
     val events = for { events <- getData(
       url = s"https://sentry.io/api/0/projects/$organization/$groupID/issues/",
@@ -57,7 +57,7 @@ object SentryRetriever extends HttpRequestTrait:
     given system: ActorSystem = ActorSystem("slack")
     given executionContext: ExecutionContext = system.dispatcher
 
-    import io.circe._, io.circe.parser._
+    import io.circe.*, io.circe.parser.*
 
     val events = for { events <- getData(
       url = s"https://sentry.io/api/0/projects/$organization/$groupID/events/",
